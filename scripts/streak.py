@@ -77,18 +77,34 @@ cols = [
     (str(longest), "Longest streak", fmt(best_start, best_start + timedelta(days=longest - 1)) if longest else ""),
 ]
 
-W, H = 760, 150
+W, H = 760, 190
 cw = W / 3
+import math
+R = 42
+circ = 2 * math.pi * R
+frac = min(1.0, streak / longest) if longest else 0
+last = [days.get((today - timedelta(days=29 - i)).isoformat(), 0) for i in range(30)]
+peak = max(max(last), 1)
 parts = [
     f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="GitHub contribution streak">',
-    '<style>.n{font:700 40px "Segoe UI",Ubuntu,sans-serif;fill:#F28C28}.l{font:600 15px "Segoe UI",Ubuntu,sans-serif;fill:#E6EDF3}.s{font:400 13px "Segoe UI",Ubuntu,sans-serif;fill:#8B949E}@keyframes up{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}.c{animation:up .7s ease both}</style>',
-    f'<rect x="0.5" y="0.5" width="{W-1}" height="{H-1}" rx="14" fill="#0D1117" stroke="#21262D"/>',
+    '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0D1117"/><stop offset="1" stop-color="#2A170A"/></linearGradient></defs>',
+    '<style>.n{font:700 38px "Segoe UI",Ubuntu,sans-serif;fill:#F28C28}.l{font:600 15px "Segoe UI",Ubuntu,sans-serif;fill:#E6EDF3}.s{font:400 13px "Segoe UI",Ubuntu,sans-serif;fill:#8B949E}'
+    '@keyframes up{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}.c{animation:up .7s ease both}'
+    f'@keyframes ring{{from{{stroke-dashoffset:{circ:.2f}}}to{{stroke-dashoffset:{circ*(1-frac):.2f}}}}}.r{{stroke-dasharray:{circ:.2f};animation:ring 1.6s ease-out both}}'
+    '@keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}.b{transform-box:fill-box;transform-origin:bottom;animation:grow .8s ease-out both}</style>',
+    f'<rect x="0.5" y="0.5" width="{W-1}" height="{H-1}" rx="14" fill="url(#g)" stroke="#8A4A14" stroke-opacity=".45"/>',
 ]
+bw = (W - 56) / 30
+for i, v in enumerate(last):
+    h = 3 + 11 * v / peak
+    parts.append(f'<rect class="b" style="animation-delay:{i*0.02:.2f}s" x="{28+i*bw+2:.1f}" y="{H-12-h:.1f}" width="{bw-4:.1f}" height="{h:.1f}" rx="2" fill="#F28C28" fill-opacity="{0.25 if v==0 else 0.55}"/>')
 for i, (n, label, sub) in enumerate(cols):
     cx = cw * i + cw / 2
-    parts.append(f'<g class="c" style="animation-delay:{i*0.15}s" text-anchor="middle"><text class="n" x="{cx}" y="70">{n}</text><text class="l" x="{cx}" y="100">{label}</text><text class="s" x="{cx}" y="124">{sub}</text></g>')
+    if i == 1:
+        parts.append(f'<circle cx="{cx}" cy="64" r="{R}" fill="none" stroke="#21262D" stroke-width="4"/><circle class="r" cx="{cx}" cy="64" r="{R}" fill="none" stroke="#F28C28" stroke-width="4" stroke-linecap="round" transform="rotate(-90 {cx} {64})"/>')
+    parts.append(f'<g class="c" style="animation-delay:{i*0.15}s" text-anchor="middle"><text class="n" x="{cx}" y="77">{n}</text><text class="l" x="{cx}" y="128">{label}</text><text class="s" x="{cx}" y="148">{sub}</text></g>')
     if i:
-        parts.append(f'<line x1="{cw*i}" y1="32" x2="{cw*i}" y2="{H-32}" stroke="#21262D"/>')
+        parts.append(f'<line x1="{cw*i}" y1="28" x2="{cw*i}" y2="150" stroke="#8A4A14" stroke-opacity=".35"/>')
 parts.append("</svg>")
 os.makedirs(os.path.dirname(out) or ".", exist_ok=True)
 open(out, "w").write("".join(parts))
