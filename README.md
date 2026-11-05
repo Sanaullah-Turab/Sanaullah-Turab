@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D1117,100:8A4A14&height=190&section=header&text=Sanaullah%20Turab&fontSize=50&fontColor=FFFFFF&animation=fadeIn&fontAlignY=38&desc=AI%20%2F%20ML%20ENGINEER%20%C2%B7%20FULL-STACK%20DEVELOPER&descAlignY=60&descColor=F28C28&descSize=15" width="100%" alt="Header"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:E08A3C,30:C66E26,65:7A4524,100:2A1B11&height=190&section=header&text=Sanaullah%20Turab&fontSize=50&fontColor=FFFFFF&animation=fadeIn&fontAlignY=38&desc=AI%20%2F%20ML%20ENGINEER%20%C2%B7%20FULL-STACK%20DEVELOPER&descAlignY=60&descColor=FFE2C2&descSize=15" width="100%" alt="Header"/>
 
   <a href="https://github.com/Sanaullah-Turab">
     <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=14&pause=1200&color=F28C28&center=true&vCenter=true&width=640&lines=Building+ML+systems+end+to+end;Reinforcement+learning+%7C+LLMs+%7C+Computer+vision;Shipping+full-stack+products+with+Next.js" alt="Typing SVG"/>
@@ -45,6 +45,8 @@ Previously: ML Engineering Intern at **FlyRank AI** and Full-Stack Dashboard Int
 </div>
 
 <div align="center">
-  <br/>
-  <i>Open to AI/ML roles, research collaborations and open source work.</i>
+  <a href="https://github.com/Sanaullah-Turab">
+    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=14&pause=1200&color=F28C28&center=true&vCenter=true&width=640&lines=Open+to+AI%2FML+roles;Open+to+research+collaborations;Open+to+open+source+work" alt="Typing SVG"/>
+  </a>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:E08A3C,30:C66E26,65:7A4524,100:2A1B11&height=190&section=footer&text=Let%27s%20Build%20Something&fontSize=34&fontColor=FFFFFF&animation=fadeIn&fontAlignY=62&desc=AI%20%2F%20ML%20%C2%B7%20FULL-STACK%20%C2%B7%20OPEN%20SOURCE&descAlignY=82&descColor=FFE2C2&descSize=14" width="100%" alt="Footer"/>
 </div>

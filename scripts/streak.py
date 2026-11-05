@@ -87,12 +87,12 @@ last = [days.get((today - timedelta(days=29 - i)).isoformat(), 0) for i in range
 peak = max(max(last), 1)
 parts = [
     f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="GitHub contribution streak">',
-    '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0D1117"/><stop offset="1" stop-color="#2A170A"/></linearGradient></defs>',
-    '<style>.n{font:700 38px "Segoe UI",Ubuntu,sans-serif;fill:#F28C28}.l{font:600 15px "Segoe UI",Ubuntu,sans-serif;fill:#E6EDF3}.s{font:400 13px "Segoe UI",Ubuntu,sans-serif;fill:#8B949E}'
+    '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2A1B11"/><stop offset="1" stop-color="#5A3518"/></linearGradient></defs>',
+    '<style>.n{font:700 38px "Segoe UI",Ubuntu,sans-serif;fill:#F28C28}.l{font:600 15px "Segoe UI",Ubuntu,sans-serif;fill:#FFF1E3}.s{font:400 13px "Segoe UI",Ubuntu,sans-serif;fill:#D9B596}'
     '@keyframes up{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}.c{animation:up .7s ease both}'
     f'@keyframes ring{{from{{stroke-dashoffset:{circ:.2f}}}to{{stroke-dashoffset:{circ*(1-frac):.2f}}}}}.r{{stroke-dasharray:{circ:.2f};animation:ring 1.6s ease-out both}}'
     '@keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}.b{transform-box:fill-box;transform-origin:bottom;animation:grow .8s ease-out both}</style>',
-    f'<rect x="0.5" y="0.5" width="{W-1}" height="{H-1}" rx="14" fill="url(#g)" stroke="#8A4A14" stroke-opacity=".45"/>',
+    f'<rect x="0.5" y="0.5" width="{W-1}" height="{H-1}" rx="14" fill="url(#g)" stroke="#C66E26" stroke-opacity=".55"/>',
 ]
 bw = (W - 56) / 30
 for i, v in enumerate(last):
@@ -101,10 +101,10 @@ for i, v in enumerate(last):
 for i, (n, label, sub) in enumerate(cols):
     cx = cw * i + cw / 2
     if i == 1:
-        parts.append(f'<circle cx="{cx}" cy="64" r="{R}" fill="none" stroke="#21262D" stroke-width="4"/><circle class="r" cx="{cx}" cy="64" r="{R}" fill="none" stroke="#F28C28" stroke-width="4" stroke-linecap="round" transform="rotate(-90 {cx} {64})"/>')
+        parts.append(f'<circle cx="{cx}" cy="64" r="{R}" fill="none" stroke="#4A2D17" stroke-width="4"/><circle class="r" cx="{cx}" cy="64" r="{R}" fill="none" stroke="#F28C28" stroke-width="4" stroke-linecap="round" transform="rotate(-90 {cx} {64})"/>')
     parts.append(f'<g class="c" style="animation-delay:{i*0.15}s" text-anchor="middle"><text class="n" x="{cx}" y="77">{n}</text><text class="l" x="{cx}" y="128">{label}</text><text class="s" x="{cx}" y="148">{sub}</text></g>')
     if i:
-        parts.append(f'<line x1="{cw*i}" y1="28" x2="{cw*i}" y2="150" stroke="#8A4A14" stroke-opacity=".35"/>')
+        parts.append(f'<line x1="{cw*i}" y1="28" x2="{cw*i}" y2="150" stroke="#C66E26" stroke-opacity=".4"/>')
 parts.append("</svg>")
 os.makedirs(os.path.dirname(out) or ".", exist_ok=True)
 open(out, "w").write("".join(parts))
